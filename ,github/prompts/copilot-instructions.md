@@ -17,6 +17,7 @@ This project is a web application built with Fastapi.
 - Use Pydantic for data validation
 - Use Pytest for testing
 - Use FastAPI for the web framework
+- Follow the REST
 
 ## Indentation
 
