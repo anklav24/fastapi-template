@@ -7,7 +7,6 @@ This project is a web application built with Fastapi.
 - Clean architecture
 - Onion architecture
 - Domain driven design
-- Microservices
 - Use Docker for containerization
 - Use PostgreSQL for the database
 - Use MongoDB for the database
