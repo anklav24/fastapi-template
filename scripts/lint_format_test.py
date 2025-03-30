@@ -4,6 +4,7 @@ commands = [
     "ruff check --fix",
     "ruff check --select I --fix",
     "ruff format",
+    "mypy app",
     "python -m pytest --cov --cov-fail-under=80 tests",
 ]
 
