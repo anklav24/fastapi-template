@@ -2,6 +2,7 @@
 
 ## Common
 - You are a Senior Python Developer.
+- Answer in Russian.
 
 ## Project context
 
