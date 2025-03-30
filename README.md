@@ -13,7 +13,7 @@
 - https://github.com/polarsource/polar # Good UI on next JS
 - https://github.com/Netflix/dispatch # Vue UI, RBAC
 - https://github.com/TracecatHQ/tracecat
-- https://github.com/ljvmiranda921/sprites-as-a-service  # Vue
+- https://github.com/ljvmiranda921/sprites-as-a-service # Vue
 
 # Examples and read projects
 
@@ -28,9 +28,11 @@
 
 - https://github.com/antonputra/tutorials/tree/251/lessons/239/fastapi-app
 
+# Code quality
 
+- uv run scripts/lint_format_test.py
 
-
+# Other
 
 https://habr.com/ru/articles/816355/
 Для python существует множество библиотек, предоставляющих различные реализации DI Container, я просмотрел почти все из них и записал лучшие IMO
@@ -173,7 +175,7 @@ uv run .\screen.py
 
 ### Code style
 
-```bash
+````bash
 # use `uv run COMMAND` or activate env
 ruff check
 ruff check --select I --fix
@@ -194,9 +196,10 @@ docker ps -a
 docker stats
 # run add in console or ide
 # OR `uv run start`  # Check pyproject.toml
-```
+````
 
 ## Где остановился
+
 - ёще раз глануть как реализован подход https://github.com/artemonsh/fastapi-onion-architecture/tree/pt2_unit_of_work/src
 
 - https://fastapi.tiangolo.com/ru/tutorial/body/
@@ -209,15 +212,16 @@ docker stats
 
 - настроить middleware (cors) и как быть с бекенд запросами, корс только на фронт?
 
-  [//]: # (- Попробовать mongo подключить)
-- Доделать интеграцию с mongo  # Подключить через ODM https://beanie-odm.dev/ или https://art049.github.io/odmantic/
+  [//]: # "- Попробовать mongo подключить"
+
+- Доделать интеграцию с mongo # Подключить через ODM https://beanie-odm.dev/ или https://art049.github.io/odmantic/
 - Попробовать подключить бесплатный кластер от cloud.mongodb.com (Atlas)
 - Настроить реплики и шардирование БД
 
 - настроить аутентификацию (jwt?)
 - настроить метрики (prometheus)
 - настроить трейсинг (grafana tempo)
-- настроить логгирование (logging grafana loki) 
+- настроить логгирование (logging grafana loki)
 
 - TODO: использовать traefik вместо nginx чтобы поддерживать масштабирование (через динамическое добавление сервисов)?
 - развернуть в swarn
@@ -227,9 +231,10 @@ docker stats
 - Нужен скрипт или контейнер инициализации (БД настроить и тп. чтобы не увеличивать время запуска проверяя это всё и это делал только один сервис)
 - Docker swarm или k8s?
 
-[//]: # (- Надо вынести всё в env настройки)
+[//]: # "- Надо вынести всё в env настройки"
 
 # Arhitecture
+
 - Onion
 - Solid
 - Microservice
@@ -251,6 +256,7 @@ docker stats
 - OR SQLModel? https://sqlmodel.tiangolo.com/
 
 #### Cache
+
 - aiocache or async-lru
 - redis? https://redis.io/
 
@@ -262,15 +268,15 @@ docker stats
 - [mypy types cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
 - ruff? or - flake8? - isort?
 - conventional commits
-    - https://www.conventionalcommits.org/en/about/
-    - https://github.com/commitizen-tools/commitizen
-    - https://github.com/jorisroovers/gitlint
-    - https://github.com/python-semantic-release/python-semantic-release
-    - https://github.com/jgoodman8/pyhist
+
+  - https://www.conventionalcommits.org/en/about/
+  - https://github.com/commitizen-tools/commitizen
+  - https://github.com/jorisroovers/gitlint
+  - https://github.com/python-semantic-release/python-semantic-release
+  - https://github.com/jgoodman8/pyhist
 
 - pytest
 - coverage # Как проверять что не упал процент?
-
 
 ### Install
 
@@ -293,6 +299,7 @@ python payment_service/main.py
 ```
 
 ### Docker local / dev
+
 ```bash
 # STAGE=dev,test or prod
 STAGE=prod && docker build --rm -t payment-service:$STAGE --target $STAGE ./ && docker image prune --force
@@ -303,11 +310,11 @@ STAGE=prod && docker run -d --name payment-service-$STAGE -p 8000:8000 payment-s
 ```
 
 ### Docker compose local / dev
+
 ```bash
 docker image prune --force && docker compose up --build  # Проще
 docker compose build && docker image prune --force && docker compose up  # Полная
 ```
-
 
 ### Code Quality
 
@@ -330,7 +337,9 @@ pytest  # -v for more details
 # Запускай coverage тоже
 mypy payment_service/
 ```
+
 #### Нагрузочное тестирование
+
 ```bash
 wrk -t 2 -c 10 -d 10 http://nzxt-home-pc:8001/books3  # Напрямую
 wrk -t 4 -c 10 -d 10 http://payments.nklv.top/books3  # С traefik
@@ -341,11 +350,12 @@ wrk -t4 -c100 -d10s http://localhost:8080/health  # С nginx
 
 - http://localhost:8000/docs
 - http://127.0.0.1:8000/redoc
-- https://github.com/squidfunk/mkdocs-material  TODO: Заморочиться и поднять сайт с документацией?
+- https://github.com/squidfunk/mkdocs-material TODO: Заморочиться и поднять сайт с документацией?
 
 ### Refs
 
 #### Templates
+
 - Хороший FullStack Template https://github.com/fastapi/full-stack-fastapi-template/tree/master?tab=readme-ov-file
 - Очень много под prod ready https://github.com/s3rius/FastAPI-template
 - https://github.com/zhanymkanov/fastapi_production_template
@@ -354,11 +364,8 @@ wrk -t4 -c100 -d10s http://localhost:8080/health  # С nginx
 - Пример с тенажер https://github.com/szymon6927/hexagonal-architecture-python
 - Пример статьи с gateway и rabit https://snimkar1905.medium.com/building-microservices-with-fastapi-and-rabbitmq-part1-1104dbd4ad96
 
-
 -[mypy Playground](https://mypy-play.net/?mypy=latest&python=3.11&gist=d0a3e2279a7a6147541570967634f0da)
 
 - https://solvit.space/roadmaps/fastapi-interactive?utm_source=tg_bot_artemshumeikobot&utm_medium=organic&utm_campaign=roadmap_fastapi
 
 - Слоиская архитектура https://www.youtube.com/watch?v=8Im74b55vFc&ab_channel=%D0%90%D1%80%D1%82%D1%91%D0%BC%D0%A8%D1%83%D0%BC%D0%B5%D0%B9%D0%BA%D0%BE
-
-
